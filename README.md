@@ -2,7 +2,7 @@
 
 A utility for unpacking and repacking backup files from Roland synthesizers using the SVD format (version 5).
 
-This program can be compiled using a [Free Pascal](https://www.freepascal.org) compiler.
+This program can be compiled using [Free Pascal](https://www.freepascal.org) compiler.
 
 ## Features
 
