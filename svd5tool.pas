@@ -5,35 +5,35 @@ uses
 
 type
 	svdHeaderRecordT = packed record
-							id:		packed array [0..3] of char;
-							sign:	UInt32;
-							offset:	UInt32;
-							length:	UInt32;
-						end;
+				id:	packed array [0..3] of char;
+				sign:	UInt32;
+				offset:	UInt32;
+				length:	UInt32;
+			end;
 
 	svdHeaderT = packed record
-						headerLength: UInt16;
-						headerId:     UInt32;
-						emptyData: packed array [0..4] of UInt16;
-					end;
+				headerLength: UInt16;
+				headerId:     UInt32;
+				emptyData: packed array [0..4] of UInt16;
+			end;
 
 	svdRecordInfo = packed record
-						recordCount:  UInt32;
-						recordLength: UInt32;
-						infoLength:	  UInt32;
-						emptydata:    UInt32;
-					end;
+				recordCount:	UInt32;
+				recordLength:	UInt32;
+				infoLength:	UInt32;
+				emptydata:	UInt32;
+			end;
 
 Procedure HaltMessage(msg: String);
-	begin
-		WriteLn(msg);
-		halt;
-	end;
+begin
+	WriteLn(msg);
+	halt;
+end;
 
 Function PtrOffset(basePtr: Pointer; offset: PtrUInt): Pointer;
-	begin
+begin
     	PtrOffset := Pointer(PtrUInt(basePtr) + offset);
-	end;
+end;
 
 function CalculateCRC16(Data: Pointer; dataLength: UInt16): string;
 var
