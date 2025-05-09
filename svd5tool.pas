@@ -2,8 +2,7 @@ program RolandSVD5Tool;
 {$mode Delphi}
 uses DOS;
 
-type
-	svdHeaderRecordT = packed record
+type	svdHeaderRecordT = packed record
 				id:	packed array [0..3] of char;
 				sign:	UInt32;
 				offset:	UInt32;
