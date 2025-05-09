@@ -161,7 +161,7 @@ begin
 	BlockRead(fl, flpt^, size);
 	Close(fl);
 	WriteLn('  Packing '+ filename +' ...');
-	WriteLn('--------------------------------------------');
+	WriteLn('---------------------------------------------');
 	AssignFile(flo, filename);
 	Rewrite(flo, 1);
 	header := flpt;
