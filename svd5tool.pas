@@ -91,7 +91,7 @@ begin
 
 	WriteLn('  Unpacking '+ filename +' ...');
 	WriteLn('---------------------------------------------');
-	AssignFile(floh, 'DAT.rdt');
+	AssignFile(floh, 'DAT.RDT');
 	Rewrite(floh, 1);
 	BlockWrite(floh, header^, sizeOf(svdHeaderT) + recNum*sizeOf(svdHeaderRecordT));
 
@@ -125,7 +125,7 @@ begin
 			end;
 			Str(r, st);
 			st:='00'+ st;
-			AssignFile(flo, id+'.'+copy(st, Length(st)-2, 3)+stName+' ['+ CalculateCRC16(cpt, recInfo^.recordLength)+'].rdt');
+			AssignFile(flo, id+'.'+copy(st, Length(st)-2, 3)+stName+' ['+ CalculateCRC16(cpt, recInfo^.recordLength)+'].RDT');
 			Rewrite(flo, 1);
 			BlockWrite(flo, cpt^, recInfo^.recordLength);
 			close(flo);
@@ -149,11 +149,11 @@ var
 	st, id: string;
 	size: UInt32;
 begin
-	AssignFile(fl, 'DAT.rdt');
+	AssignFile(fl, 'DAT.RDT');
 	{$I-}
 	Reset(fl, 1);
 	{$I+}
-	if IOResult <> 0 then HaltMessage(' Error! Can''t open DAT.rdt');
+	if IOResult <> 0 then HaltMessage(' Error! Can''t open DAT.RDT');
 
 	size := FileSize(fl);
 	GetMem(flpt, size);
@@ -180,8 +180,8 @@ begin
 			Str(r, st);
 			st:='00'+ st;
 			st:= id+'.'+copy(st, Length(st)-2, 3);
-			FindFirst(st+'*.rdt', 0, srRec);
-			if DosError = 0 then st := srRec.Name else st := st+'.rdt';
+			FindFirst(st+'*.RDT', 0, srRec);
+			if DosError = 0 then st := srRec.Name else st := st+'.RDT';
 			FindClose(srRec);
 			AssignFile(fl, st);
 			{$I-}
