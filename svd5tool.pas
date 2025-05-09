@@ -2,7 +2,7 @@ program RolandSVD5Tool;
 {$mode Delphi}
 uses DOS;
 
-type	
+type
 	svdHeaderRecordT = packed record
 				id:	packed array [0..3] of char;
 				sign:	UInt32;
@@ -31,7 +31,7 @@ end;
 
 Function PtrOffset(basePtr: Pointer; offset: PtrUInt): Pointer;
 begin
-    	PtrOffset := Pointer(PtrUInt(basePtr) + offset);
+	PtrOffset := Pointer(PtrUInt(basePtr) + offset);
 end;
 
 function CalculateCRC16(Data: Pointer; dataLength: UInt16): string;
@@ -40,7 +40,7 @@ var
 	i, j, startPos: UInt32;
 	ByteData: PByte;
 const
- 	HexChars: array[0..15] of Char = '0123456789ABCDEF';
+	HexChars: array[0..15] of Char = '0123456789ABCDEF';
 
 begin
 	CRC := $FFFF;
@@ -72,14 +72,14 @@ var
 	addName: Boolean;
 	cChar: Char;
 
- begin
+begin
 	AssignFile(fl, filename);
 	{$I-}
 	Reset(fl, 1);
 	{$I+}
 	if IOResult <> 0 then HaltMessage(' Error! Can''t open ' + filename);
 
-  	size := FileSize(fl);
+	size := FileSize(fl);
 	GetMem(flpt, size);
 	BlockRead(fl, flpt^, size);
 	Close(fl);
@@ -88,7 +88,7 @@ var
 	recNum := ((header^.headerLength-14) div sizeOf(svdHeaderRecordT));
 	if header^.headerId <> 893670995 then HaltMessage(' Wrong SVD5 header');
 
-  	headerRec := PtrOffset(flpt, sizeOf(svdHeaderT));
+	headerRec := PtrOffset(flpt, sizeOf(svdHeaderT));
 
 	WriteLn('  Unpacking '+ filename +' ...');
 	WriteLn('--------------------------------------------');
@@ -105,7 +105,7 @@ var
 		id := headerRec^.id[0]+headerRec^.id[1]+headerRec^.id[2];
 		Write('  '+id+' : '); Write(recInfo^.recordCount); Write(' x '); Write(recInfo^.recordLength); WriteLn;
 
-   		addName := ((id='PAT') or (id='PRF') or (id='RHI') or (id='RHY'));
+		addName := ((id='PAT') or (id='PRF') or (id='RHI') or (id='RHY'));
 		stName := '';
 		for r:=1 to recInfo^.recordCount do
 		begin
@@ -153,10 +153,10 @@ begin
 	AssignFile(fl, 'DAT.rdt');
 	{$I-}
 	Reset(fl, 1);
-    	{$I+}
-    	if IOResult <> 0 then HaltMessage(' Error! Can''t open DAT.rdt');
+		{$I+}
+		if IOResult <> 0 then HaltMessage(' Error! Can''t open DAT.rdt');
 
- 	size := FileSize(fl);
+	size := FileSize(fl);
 	GetMem(flpt, size);
 	BlockRead(fl, flpt^, size);
 	Close(fl);
@@ -187,16 +187,16 @@ begin
 			AssignFile(fl, st);
 			{$I-}
 			Reset(fl, 1);
-    			{$I+}
-    			if IOResult <> 0 then
+			{$I+}
+			if IOResult <> 0 then
 			begin
 				Rewrite(flo, 1);
 				Close(flo);
 				HaltMessage(' Error! Can''t open ' + st);
 			end;
-    			BlockRead(fl, cpt^, recInfo^.recordLength);
-    			Close(fl);
-    			BlockWrite(flo, cpt^, recInfo^.recordLength);
+			BlockRead(fl, cpt^, recInfo^.recordLength);
+			Close(fl);
+			BlockWrite(flo, cpt^, recInfo^.recordLength);
 		end;
 		FreeMem(cpt, recInfo^.recordLength);
 	end;
