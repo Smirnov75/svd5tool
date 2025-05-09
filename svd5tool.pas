@@ -91,7 +91,7 @@ begin
 	headerRec := PtrOffset(flpt, sizeOf(svdHeaderT));
 
 	WriteLn('  Unpacking '+ filename +' ...');
-	WriteLn('--------------------------------------------');
+	WriteLn('---------------------------------------------');
 	AssignFile(floh, 'DAT.rdt');
 	Rewrite(floh, 1);
 	BlockWrite(floh, header^, sizeOf(svdHeaderT) + recNum*sizeOf(svdHeaderRecordT));
@@ -135,7 +135,7 @@ begin
 		headerRec := PtrOffset(headerRec, sizeOf(svdHeaderRecordT));
 	end;
 	close(floh);
-	WriteLn('--------------------------------------------');
+	WriteLn('---------------------------------------------');
 end;
 
 Procedure PackBackup(filename: string);
@@ -202,13 +202,13 @@ begin
 	end;
 	FreeMem(flpt, size);
 	Close(flo);
-	WriteLn('--------------------------------------------');
+	WriteLn('---------------------------------------------');
 end;
 
 begin
-	WriteLn('--------------------------------------------');
+	WriteLn('---------------------------------------------');
 	WriteLn(' Roland SVD5 tool (c) Max Smirnov.2025 v0.97');
-	WriteLn('--------------------------------------------');
+	WriteLn('---------------------------------------------');
 	if paramCount()<2 Then HaltMessage(' USAGE: svd5tool <unpack|pack> <file.SVD>');
 	if (paramStr(1) = 'unpack') Then ExtractBackup(paramStr(2));
 	if (paramStr(1) = 'pack') Then PackBackup(paramStr(2));
