@@ -35,7 +35,7 @@ svd5tool unpack <input.svd>
 Numbered files representing individual backup components will be created in the current folder.
 These components can be copied and moved between backups of the same synthesizer model.
 
-**Note:** When rearranging the positions of subordinate blocks and links within tracks may become inconsistent. This will not damage the device, but connections between track elements may be disrupted.
+**Note:** When rearranging the positions of subordinate blocks a links within tracks may become inconsistent. This will not damage the device, but connections between track elements may be disrupted.
 
 A checksum in the format `[xxxx]` is included at the end of each file name to quickly compare file identity.
 The part of the filename after the `-` symbol is arbitrary and added for convenience only.
