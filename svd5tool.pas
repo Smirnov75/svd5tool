@@ -3,16 +3,16 @@ program RolandSVD5Tool;
 uses DOS;
 
 type	svdHeaderRecordT = packed record
-				id:	packed array [0..3] of char;
-				sign:	UInt32;
-				offset:	UInt32;
-				length:	UInt32;
+				id:		packed array [0..3] of char;
+				sign:		UInt32;
+				offset:		UInt32;
+				length:		UInt32;
 			end;
 
 	svdHeaderT = packed record
-				headerLength: UInt16;
-				headerId:     UInt32;
-				emptyData: packed array [0..4] of UInt16;
+				headerLength:	UInt16;
+				headerId:	UInt32;
+				emptyData:	packed array [0..4] of UInt16;
 			end;
 
 	svdRecordInfo = packed record
