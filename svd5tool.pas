@@ -153,8 +153,8 @@ begin
 	AssignFile(fl, 'DAT.rdt');
 	{$I-}
 	Reset(fl, 1);
-		{$I+}
-		if IOResult <> 0 then HaltMessage(' Error! Can''t open DAT.rdt');
+	{$I+}
+	if IOResult <> 0 then HaltMessage(' Error! Can''t open DAT.rdt');
 
 	size := FileSize(fl);
 	GetMem(flpt, size);
