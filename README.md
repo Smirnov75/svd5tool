@@ -14,12 +14,12 @@ This program can be compiled using [Free Pascal](https://www.freepascal.org) com
 
 ## ⚠️ Warning
 
-**Use with great care!**
+**Use with care!**
 
 Before using this utility for real tasks, perform the following safety check:
 
 1. Unpack a backup file from your synthesizer.
-2. Repack it immediately without making any changes.
+2. Repack it without making any changes.
 3. Compare the original and resulting files.
 
 If they match exactly, the utility is safe to use with your backup.
